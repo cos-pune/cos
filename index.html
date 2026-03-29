@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Central Office Solutions | Premium Corporate Supply Chain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --ink:       #0A0C10;
+      --paper:     #F7F6F3;
+      --white:     #FFFFFF;
+      --accent:    #D96B2A;
+      --accent-lt: rgba(217, 107, 42, 0.12);
+      --navy:      #0D1F33;
+      --muted:     #8A94A0;
+      --border:    rgba(10,12,16,0.08);
+      --hero-bg:   #0A0C10;
+      --card-bg:   #F7F6F3;
+
+      --r-card: 20px;
+      --r-pill: 100px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 24px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+      --shadow-lg: 0 16px 40px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.05);
+
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --dur: 260ms;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ── NAV ────────────────────────────────────────────── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    header.scrolled {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+    }
+
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 38px; height: 38px;
+      background: var(--accent);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-icon svg { display: block; }
+    .logo-text { display: flex; flex-direction: column; }
+    .logo-text strong {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .logo-text span {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    header.hero-nav .logo-text strong { color: #fff; }
+    header.hero-nav .logo-text span { color: rgba(255,255,255,0.5); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color var(--dur);
+    }
+    header.hero-nav .nav-links a { color: rgba(255,255,255,0.75); }
+    header.hero-nav .nav-links a:hover { color: #fff; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #fff !important;
+      background: var(--accent);
+      padding: 10px 22px;
+      border-radius: var(--r-pill);
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(217,107,42,0.35) !important;
+      color: #fff !important;
+    }
+
+    /* ── HERO ───────────────────────────────────────────── */
+    .hero {
+      background: var(--hero-bg);
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle grid texture */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+    }
+
+    /* Glow orb */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(217,107,42,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px; height: 1.5px;
+      background: var(--accent);
+    }
+
+    .hero-headline {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    .hero-headline em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+      max-width: 440px;
+      margin-bottom: 44px;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: var(--r-pill);
+      text-decoration: none;
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+      display: inline-block;
+      letter-spacing: 0.01em;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(217,107,42,0.4);
+    }
+
+    .btn-ghost {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 14px 32px;
+      border-radius: var(--r-pill);
+      text-decoration: none;
+      transition: all var(--dur) var(--ease);
+      display: inline-block;
+      backdrop-filter: blur(8px);
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    /* Hero right — floating stat cards */
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 24px 28px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform var(--dur) var(--ease);
+    }
+    .hero-card:hover { transform: translateX(-4px); }
+    .hero-card:nth-child(2) { margin-left: 32px; }
+
+    .hc-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 10px;
+    }
+    .hc-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .hc-value span { color: var(--accent); }
+    .hc-sub {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 6px;
+    }
+
+    /* ── TICKER STRIP ───────────────────────────────────── */
+    .ticker-strip {
+      background: var(--accent);
+      padding: 14px 0;
+      overflow: hidden;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      animation: ticker 20s linear infinite;
+      width: max-content;
+    }
+    .ticker-item {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .ticker-dot {
+      width: 4px; height: 4px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION BASE ───────────────────────────────────── */
+    section { padding: 100px 0; }
+
+    .label-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .label-tag::before {
+      content: '';
+      display: block;
+      width: 16px; height: 1.5px;
+      background: var(--accent);
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 520px;
+    }
+
+    /* ── SERVICES / BENTO GRID ──────────────────────────── */
+    .services { background: var(--paper); }
+
+    .services-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      gap: 16px;
+    }
+
+    /* Layout: large card + 2 small + 3 small */
+    .bento-cell {
+      background: var(--white);
+      border-radius: var(--r-card);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur);
+      position: relative;
+      overflow: hidden;
+    }
+    .bento-cell:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+
+    /* Subtle top stripe on hover */
+    .bento-cell::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity var(--dur);
+    }
+    .bento-cell:hover::before { opacity: 1; }
+
+    .bc-1 { grid-column: span 7; }
+    .bc-2 { grid-column: span 5; }
+    .bc-3 { grid-column: span 4; }
+    .bc-4 { grid-column: span 4; }
+    .bc-5 { grid-column: span 4; }
+    .bc-6 { grid-column: span 4; }
+
+    /* Featured card (Stationery) — accent BG */
+    .bento-featured {
+      background: var(--ink);
+      border-color: transparent;
+    }
+    .bento-featured .bc-icon { background: rgba(255,255,255,0.08); }
+    .bento-featured .bc-icon svg { stroke: rgba(255,255,255,0.8); }
+    .bento-featured h3 { color: #fff; }
+    .bento-featured p { color: rgba(255,255,255,0.45); }
+    .bento-featured::before {
+      background: linear-gradient(90deg, var(--accent), rgba(217,107,42,0.2));
+    }
+
+    .bc-icon {
+      width: 48px; height: 48px;
+      background: var(--paper);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+    }
+    .bento-cell h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .bento-cell p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Large card extra */
+    .bc-1 .bc-extra {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      gap: 24px;
+    }
+    .bc-extra-stat strong {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.03em;
+      display: block;
+    }
+    .bc-extra-stat span {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ── ABOUT ──────────────────────────────────────────── */
+    .about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-body p {
+      font-size: 1rem;
+      color: #3D4F60;
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .about-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 32px;
+    }
+    .about-checklist li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .check-icon {
+      width: 22px; height: 22px;
+      background: var(--accent-lt);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Stats right column */
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .stat-tile {
+      background: var(--paper);
+      border-radius: var(--r-card);
+      padding: 32px 24px;
+      border: 1px solid var(--border);
+    }
+    .stat-tile:first-child {
+      grid-column: span 2;
+      background: var(--ink);
+      border-color: transparent;
+    }
+    .stat-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-tile:first-child .stat-num { font-size: 4rem; }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.45;
+    }
+    .stat-tile:first-child .stat-label { color: rgba(255,255,255,0.4); }
+    .stat-tile:first-child .stat-num { color: #fff; }
+    .stat-tile:first-child .stat-num span { color: var(--accent); }
+
+    /* ── CONTACT ────────────────────────────────────────── */
+    .contact { background: var(--paper); }
+    .contact-inner {
+      background: var(--ink);
+      border-radius: 32px;
+      padding: 72px 64px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 80px;
+      align-items: start;
+      overflow: hidden;
+      position: relative;
+    }
+    .contact-inner::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -80px;
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(217,107,42,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-left { position: relative; z-index: 1; }
+    .contact-left .label-tag { color: rgba(217,107,42,0.9); }
+    .contact-left .label-tag::before { background: var(--accent); }
+    .contact-left .section-title { color: #fff; }
+    .contact-left .section-sub { color: rgba(255,255,255,0.45); max-width: 360px; }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      z-index: 1;
+      margin-top: 8px;
+    }
+    .cd-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .cd-item:last-child { border-bottom: none; }
+    .cd-ico {
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .cd-text strong {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .cd-text a, .cd-text span {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: color var(--dur);
+      line-height: 1.45;
+    }
+    .cd-text a:hover { color: var(--accent); }
+    .cd-text .email-big {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .cd-text .email-big:hover { color: var(--accent); }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      padding: 32px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: -0.01em;
+    }
+    .footer-brand span { color: var(--accent); }
+    footer p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+    footer a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color var(--dur);
+    }
+    footer a:hover { color: var(--accent); }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 60px; }
+      .hero-visual { flex-direction: row; }
+      .hero-card:nth-child(2) { margin-left: 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 60px; }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      nav { padding: 20px 0; }
+      .nav-links { display: none; }
+      section { padding: 72px 0; }
+      .hero { padding: 110px 0 80px; }
+      .hero-headline { font-size: 2.6rem; }
+      .hero-visual { flex-direction: column; }
+      .hero-card:nth-child(2) { margin-left: 0; }
+      .bc-1, .bc-2, .bc-3, .bc-4, .bc-5, .bc-6 { grid-column: span 12; }
+      .services-header { flex-direction: column; align-items: flex-start; }
+      .about-stats { grid-template-columns: 1fr; }
+      .stat-tile:first-child { grid-column: span 1; }
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 48px 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-headline { font-size: 2.2rem; }
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-ghost { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ──────────────────────────────────────────────── -->
+  <header id="site-header" class="hero-nav">
+    <div class="container">
+      <nav>
+        <a href="#home" class="logo-mark">
+          <div class="logo-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <rect x="2" y="2" width="7" height="7" rx="2" fill="white"/>
+              <rect x="11" y="2" width="7" height="7" rx="2" fill="rgba(255,255,255,0.5)"/>
+              <rect x="2" y="11" width="7" height="7" rx="2" fill="rgba(255,255,255,0.5)"/>
+              <rect x="11" y="11" width="7" height="7" rx="2" fill="rgba(255,255,255,0.25)"/>
+            </svg>
+          </div>
+          <div class="logo-text">
+            <strong>COS</strong>
+            <span>Central Office Solutions</span>
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Supply</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact" class="nav-cta">Get a quote</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ── HERO ─────────────────────────────────────────────── -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <div class="hero-eyebrow">Trusted by 30+ leading enterprises</div>
+            <h1 class="hero-headline">
+              Central<br>
+              Office<br>
+              <em>Solutions</em>
+            </h1>
+            <p class="hero-sub">Everything Your Office Needs;<br>Delivered Right to Your Desk.</p>
+            <div class="hero-actions">
+              <a href="#contact" class="btn-primary">Get a free quote</a>
+              <a href="#services" class="btn-ghost">Explore solutions</a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-card">
+              <div class="hc-label">Monthly Products Delivered</div>
+              <div class="hc-value">5<span>K+</span></div>
+              <div class="hc-sub">Across corporates, hospitals &amp; hotels</div>
+            </div>
+            <div class="hero-card">
+              <div class="hc-label">On-Time Delivery</div>
+              <div class="hc-value">98<span>%</span></div>
+              <div class="hc-sub">Just-in-time procurement model</div>
+            </div>
+            <div class="hero-card">
+              <div class="hc-label">Enterprise Clients</div>
+              <div class="hc-value">30<span>+</span></div>
+              <div class="hc-sub">Banks, builders, institutions &amp; more</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TICKER ────────────────────────────────────────────── -->
+    <div class="ticker-strip">
+      <div class="ticker-track" id="ticker">
+        <div class="ticker-item"><span class="ticker-dot"></span>Stationery</div>
+        <div class="ticker-item"><span class="ticker-dot"></span>Food Supplies</div>
+        <div class="ticker-item"><span class="ticker-dot"></span>Office Equipment</div>
+        <div class="ticker-item"><span class="ticker-dot"></span>Printing &amp; Accessories</div>
+        <div class="ticker-item"><span class="ticker-dot"></span>Corporate Gifts</div>
+        <div class="ticker-item"><span class="ticker-dot"></span>Managed Inventory</div>
+        <div class="ticker-item"><span class="ticker-dot"></span>Stationery</div>
+        <div class="ticker-item"><span class="ticker-dot"></span>Food Supplies</div>
+        <div class="ticker-item"><span class="ticker-dot"></span>Office Equipment</div>
+        <div class="ticker-item"><span class="ticker-dot"></span>Printing &amp; Accessories</div>
+        <div class="ticker-item"><span class="ticker-dot"></span>Corporate Gifts</div>
+        <div class="ticker-item"><span class="ticker-dot"></span>Managed Inventory</div>
+      </div>
+    </div>
+
+    <!-- ── SERVICES ──────────────────────────────────────────── -->
+    <section id="services" class="services">
+      <div class="container">
+        <div class="services-header">
+          <div>
+            <div class="label-tag">What We Supply</div>
+            <h2 class="section-title">Workspace Essentials.<br>Elevated.</h2>
+          </div>
+          <p class="section-sub">Pune's most trusted partner for corporates, institutions &amp; hospitality — end-to-end procurement, delivered with precision.</p>
+        </div>
+
+        <div class="bento-grid">
+
+          <!-- Featured: Stationery -->
+          <div class="bento-cell bc-1 bento-featured">
+            <div class="bc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>
+            </div>
+            <h3>Stationery</h3>
+            <p>Premium notebooks, pens, planners, and organizational tools from top global brands.</p>
+            <div class="bc-extra">
+              <div class="bc-extra-stat">
+                <strong>5K+</strong>
+                <span>Products in catalog</span>
+              </div>
+              <div class="bc-extra-stat">
+                <strong>98%</strong>
+                <span>On-time delivery</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Food Supplies -->
+          <div class="bento-cell bc-2">
+            <div class="bc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C5A6E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+              </svg>
+            </div>
+            <h3>Food Supplies</h3>
+            <p>Pantry staples, gourmet snacks, beverages, and ready-to-eat solutions for breakrooms.</p>
+          </div>
+
+          <!-- Office Equipment -->
+          <div class="bento-cell bc-3">
+            <div class="bc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C5A6E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <h3>Office Equipment</h3>
+            <p>Printers, shredders, laminators, and heavy-duty machines backed by AMC support.</p>
+          </div>
+
+          <!-- Printing -->
+          <div class="bento-cell bc-4">
+            <div class="bc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C5A6E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>
+              </svg>
+            </div>
+            <h3>Printing &amp; Accessories</h3>
+            <p>Custom letterheads, marketing collateral, toner, and high-volume printing solutions.</p>
+          </div>
+
+          <!-- Corporate Gifts -->
+          <div class="bento-cell bc-5">
+            <div class="bc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C5A6E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/>
+              </svg>
+            </div>
+            <h3>Corporate Gifts</h3>
+            <p>Branded merchandise, premium hampers, diaries, and executive appreciation kits.</p>
+          </div>
+
+          <!-- Managed Inventory -->
+          <div class="bento-cell bc-6">
+            <div class="bc-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C5A6E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+              </svg>
+            </div>
+            <h3>Managed Inventory</h3>
+            <p>Automated restocking, asset tagging, and vendor consolidation — zero stockouts.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ABOUT ─────────────────────────────────────────────── -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-body">
+            <div class="label-tag">About COS</div>
+            <h2 class="section-title">Powering India's workplaces, institutions &amp; hospitality</h2>
+            <p>Central Office Solutions (COS) partners with corporate houses, builders, schools, colleges, hospitals, banks, and hotels to deliver a seamless supply chain for all office essentials. From a single pen to a complete breakroom setup — we simplify procurement.</p>
+            <p>With a curated catalog of 5,000+ products and a dedicated account management team, we ensure your operations never miss a beat. Our just-in-time delivery model keeps your inventory lean and efficient.</p>
+            <ul class="about-checklist">
+              <li>
+                <div class="check-icon">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#D96B2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="2 6 5 9 10 3"/>
+                  </svg>
+                </div>
+                98% on-time delivery record
+              </li>
+              <li>
+                <div class="check-icon">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#D96B2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="2 6 5 9 10 3"/>
+                  </svg>
+                </div>
+                Dedicated account managers
+              </li>
+            </ul>
+          </div>
+
+          <div class="about-stats">
+            <div class="stat-tile">
+              <div class="stat-num"><span>30</span>+</div>
+              <div class="stat-label">Corporate, Builders, Schools, Colleges, Hospitals, Banks, Hotels</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-num">5K+</div>
+              <div class="stat-label">Products Delivered Monthly</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-num">98%</div>
+              <div class="stat-label">On-time delivery rate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ───────────────────────────────────────────── -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="contact-inner">
+          <div class="contact-left">
+            <div class="label-tag">Get In Touch</div>
+            <h2 class="section-title" style="color:#fff;">Let's equip<br>your workspace</h2>
+            <p class="section-sub">Reach out for bulk orders, custom quotes, or free consultation.</p>
+          </div>
+
+          <div class="contact-details">
+            <div class="cd-item">
+              <div class="cd-ico">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div class="cd-text">
+                <strong>Email Us</strong>
+                <a href="mailto:info@centralofficesolutions.in" class="email-big">info@centralofficesolutions.in</a>
+              </div>
+            </div>
+            <div class="cd-item">
+              <div class="cd-ico">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div class="cd-text">
+                <strong>Visit Our Hub</strong>
+                <span>G-1, Kamal Nivas, Behind Hotel Mehru,<br>Dhole Patil Road, Pune</span>
+              </div>
+            </div>
+            <div class="cd-item">
+              <div class="cd-ico">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                </svg>
+              </div>
+              <div class="cd-text">
+                <strong>Helpline</strong>
+                <span>+91 80 4710 2233<br>(Mon–Fri, 9am–6pm)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── FOOTER ────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">COS <span>·</span> Central Office Solutions</div>
+        <p>© 2026 Central Office Solutions — Everything Your Office Needs; Delivered Right to Your Desk.</p>
+        <p><a href="mailto:info@centralofficesolutions.in">info@centralofficesolutions.in</a> &nbsp;·&nbsp; India's trusted B2B partner</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav state: transparent over hero, solid when scrolled
+    const header = document.getElementById('site-header');
+    const heroSection = document.querySelector('.hero');
+    const heroHeight = heroSection.offsetHeight;
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > heroHeight - 80) {
+        header.classList.remove('hero-nav');
+        header.classList.add('scrolled');
+      } else {
+        header.classList.add('hero-nav');
+        header.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Stagger entrance for bento cells
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.transitionDelay = `${(entry.target.dataset.i || 0) * 60}ms`;
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.bento-cell').forEach((el, i) => {
+      el.dataset.i = i;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 400ms ease, transform 400ms ease';
+      observer.observe(el);
+    });
+
+    // Add visible class via IntersectionObserver
+    const styleTag = document.createElement('style');
+    styleTag.textContent = '.bento-cell.visible { opacity: 1 !important; transform: translateY(0) !important; }';
+    document.head.appendChild(styleTag);
+  </script>
+</body>
+</html>
